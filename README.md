@@ -1,5 +1,6 @@
 # JavaTechnology_FinalProject
-Đồ án cuối kỳ môn học Công nghệ java. Tên đề tài: Quản lý sân bóng
+Đồ án cuối kỳ môn học Công nghệ java. 
+Tên đề tài: Quản lý sân bóng
 Tên thành viên:
 - Tống Đức Thành Nam - 52000896
 - Trương Quốc Thuận - 51801027
