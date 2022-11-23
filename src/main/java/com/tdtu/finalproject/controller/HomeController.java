@@ -29,9 +29,6 @@ public class HomeController {
         return "index";
     }
 
-    //error
-
-
     @RequestMapping("/login")
     public String viewLoginPage(Model model) {
         return "login";
@@ -52,6 +49,4 @@ public class HomeController {
         userRepository.save(user);
         return "redirect:/login";
     }
-
-
 }
