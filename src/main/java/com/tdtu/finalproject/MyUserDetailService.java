@@ -7,6 +7,8 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 
+import javax.annotation.PostConstruct;
+
 public class MyUserDetailService implements UserDetailsService {
 
     @Autowired
@@ -23,5 +25,6 @@ public class MyUserDetailService implements UserDetailsService {
 
         return new UserDetail(user);
     }
+
 
 }

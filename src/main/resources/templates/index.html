@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="eng"
+      xmlns:th="http://www.thymeleaf.org"
+>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Trang chủ</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container-fluid">
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="" aria-controls=""
+                aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse">
+            <a class="navbar-brand" href="#">Trang chủ</a>
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="#">Đặt sân</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Thông tin cá nhân</a>
+                </li>
+
+
+            </ul>
+            <!--            <form class="d-flex">-->
+            <!--                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">-->
+            <!--                <button class="btn btn-outline-success" type="submit">Search</button>-->
+            <!--            </form>-->
+
+            <div th:if="${user != null}" th:object="${user}">
+                <strong>Chào mừng bạn đã đăng nhập: </strong>
+                <a th:text="${user.getUsername()}"> </a>
+            </div>
+
+            <div th:if="${user == null}">
+                <a type="button" th:href="@{/login}"
+                   class="btn btn-outline-primary" style="margin: 10px">Đăng nhập</a>
+                <a type="button" th:href="@{/register}"
+                   class="btn btn-outline-secondary" style="margin: 10px">Đăng ký</a>
+            </div>
+        </div>
+    </div>
+</nav>
+
+
+</body>
+</html>
