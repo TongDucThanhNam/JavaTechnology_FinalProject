@@ -1,11 +1,14 @@
 package com.tdtu.finalproject.controller;
 
+//import com.tdtu.finalproject.DatSanRespository;
 import com.tdtu.finalproject.UserRepository;
+import com.tdtu.finalproject.model.DatSan;
 import com.tdtu.finalproject.model.EmailSenderService;
 import com.tdtu.finalproject.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.parameters.P;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -20,6 +23,9 @@ public class HomeController {
 
     @Autowired
     EmailSenderService emailSenderService;
+
+//    @Autowired
+//    DatSanRespository datSanRespository;
 
     @RequestMapping("/")
     public String viewHomePage(Model model) {
@@ -62,8 +68,6 @@ public class HomeController {
             model.addAttribute("user", user);
             System.out.println("Đã đăng nhập");
         }
-
-
         return "thongtincanhan";
     }
 
@@ -86,6 +90,19 @@ public class HomeController {
     @RequestMapping("/trangdatsan")
     public String viewTrangDatSanPage(Model model) {
         return "trangdatsan";
+    }
+
+    @PostMapping("/trangdatsan")
+    public String trangDatSan(@RequestParam String NguoiDatSan, @RequestParam int SoDienThoai, @RequestParam String ChonNgay, @RequestParam String ChonGio, Model model) {
+        //Update user info
+        DatSan datSan = new DatSan();
+        datSan.setNguoiDatSan(NguoiDatSan);
+        datSan.setSoDienThoai(SoDienThoai);
+        datSan.setNgayDatSan(ChonNgay);
+        datSan.setGioDatSan(ChonGio);
+
+//        datSanRespository.save(datSan);
+        return "redirect:/";
     }
 
     //send email
