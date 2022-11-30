@@ -13,55 +13,8 @@
 
 </head>
 <body>
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <div class="container-fluid">
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="" aria-controls=""
-                aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse">
-            <a class="navbar-brand" href="#">Trang chủ</a>
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="#">Đặt sân</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Thông tin cá nhân</a>
-                </li>
-                <li class="nav-item">
-                    <a href="#" class="nav-link">Bảng Giá</a>
+<nav th:replace="attibute/navbar.html">
 
-                </li>
-
-                <li class="nav-item">
-                    <a href="#" class="nav-link">Đặt Sân</a>
-
-                </li>
-                <li class="nav-item">
-                    <a href="#" class="nav-link">Liên Hệ</a>
-
-                </li>
-
-
-            </ul>
-            <!--            <form class="d-flex">-->
-            <!--                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">-->
-            <!--                <button class="btn btn-outline-success" type="submit">Search</button>-->
-            <!--            </form>-->
-
-            <div th:if="${user != null}" th:object="${user}">
-                <strong>Chào mừng bạn đã đăng nhập: </strong>
-                <a th:text="${user.getUsername()}"> </a>
-            </div>
-
-            <div th:if="${user == null}">
-                <a type="button" th:href="@{/login}"
-                   class="btn btn-outline-primary" style="margin: 10px">Đăng nhập</a>
-                <a type="button" th:href="@{/register}"
-                   class="btn btn-outline-secondary" style="margin: 10px">Đăng ký</a>
-            </div>
-        </div>
-    </div>
 </nav>
 
 
@@ -78,13 +31,13 @@
         </div>
         <div class="carousel-inner">
             <div class="carousel-item active">
-                <img src="images/sanbong.jpg" class="d-block w-100" alt="..." style="height: 500px">
+                <img th:src="@{images/sanbong0.jpg}" class="d-block w-100" alt="..." style="height: 500px">
             </div>
             <div class="carousel-item">
-                <img src="images/sanbong0.jpg" class="d-block w-100" alt="..." style="height: 500px">
+                <img th:src="@{images/sanbong.jpg}" class="d-block w-100" alt="..." style="height: 500px">
             </div>
             <div class="carousel-item">
-                <img src="images/sanbong1.jpg" class="d-block w-100" alt="..." style="height: 500px">
+                <img th:src="@{/images/sanbong1.jpg}" class="d-block w-100" alt="..." style="height: 500px">
             </div>
         </div>
         <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators"
@@ -122,13 +75,13 @@
 
 
         <div class="col-5">
-            <form>
+            <form th:action="@{/sendEmail}" method="post">
                 <h5>Cảm ơn bạn đã sử dụng trang web của chúng tôi</h5>
                 <p>Hãy đăng ký nhận email để biết các thông tin mới nhất từ chúng tôi.</p>
                 <div class="">
-                    <label for="notification"></label>
-                    <input id="notification" type="text" class="form-control" placeholder="Địa chỉ email">
-                    <button class="btn btn-primary" type="button">Đăng ký</button>
+                    <label for="emailDangKy"></label>
+                    <input id="emailDangKy" name="emailDangKy" type="text" class="form-control" placeholder="Địa chỉ email">
+                    <button class="btn btn-primary" type="submit">Đăng ký</button>
                 </div>
             </form>
         </div>

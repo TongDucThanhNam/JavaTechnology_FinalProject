@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="eng"
+      xmlns:th="http://www.thymeleaf.org"
+>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Trang chủ</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script crossorigin="anonymous"
+            integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8"
+            src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"></script>
+
+</head>
+<body>
+
+<!--User profile-->
+<div class="container">
+    <div class="row">
+        <div class="col-md-6 col-md-offset-3">
+            <h2 class="text-center">Thông tin cá nhân</h2>
+            <form th:action="@{thongtincanhan}" th:object="${user}" method="post">
+                <div class="row">
+                    <label>
+                        Username
+                        <input class="form-control" type="text" th:field="*{username}">
+                    </label>
+                </div>
+
+                <div class="row">
+                    <label>
+                        Email
+                        <input class="form-control" type="text" th:field="*{email}">
+                    </label>
+                </div>
+
+                <div class="row">
+                    <label>
+                        Số điện thoại
+                        <input class="form-control" type="text" th:field="*{phone}">
+                    </label>
+                </div>
+
+                <div class="row">
+                    <input class="btn btn-primary" type="submit" value="update">
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+</body>
+</html>
