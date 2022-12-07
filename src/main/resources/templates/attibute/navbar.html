@@ -23,15 +23,18 @@
                 <li class="nav-item">
                     <a th:href="@{/lichsudatsan}" class="nav-link">Lịch sử đặt sân</a>
                 </li>
+
+                <li class="nav-item">
+                    <a th:href="@{/quanlytaikhoan}" class="nav-link">Quản lý tài khoản</a>
+                </li>
             </ul>
-            <!--            <form class="d-flex">-->
-            <!--                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">-->
-            <!--                <button class="btn btn-outline-success" type="submit">Search</button>-->
-            <!--            </form>-->
+
+
 
             <div th:if="${user != null}" th:object="${user}">
                 <strong>Chào mừng bạn đã đăng nhập: </strong>
                 <a th:text="${user.getUsername()}"> </a>
+                <a th:href="@{/logout}" class="btn btn btn-outline-danger">Đăng xuất</a>
             </div>
 
             <div th:if="${user == null}">

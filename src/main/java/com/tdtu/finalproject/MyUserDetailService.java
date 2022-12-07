@@ -20,6 +20,4 @@ public class MyUserDetailService implements UserDetailsService {
         }
         return new UserDetail(user);
     }
-
-
 }

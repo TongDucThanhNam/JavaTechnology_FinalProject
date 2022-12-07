@@ -14,12 +14,20 @@
 </head>
 <body>
 
+
 <!--User profile-->
 <div class="container">
     <div class="row">
         <div class="col-md-6 col-md-offset-3">
-            <h2 class="text-center">Thông tin cá nhân</h2>
-            <form th:action="@{thongtincanhan}" th:object="${user}" method="post">
+            <h2 class="text-center">Cập nhật tài khoản</h2>
+            <form th:action="@{{id}(id=${user.getId()})}" th:object="${user}" method="post">
+                <!--                <div class="row">-->
+                <!--                    <label>-->
+                <!--                        Username-->
+                <!--                        <input class="form-control" type="text" th:field="*{userid}">-->
+                <!--                    </label>-->
+                <!--                </div>-->
+
                 <div class="row">
                     <label>
                         Username
@@ -41,10 +49,9 @@
                     </label>
                 </div>
 
-                <div class="row">
-                    <input class="btn btn-primary" type="submit" value="update">
-                </div>
+                <input class="btn btn-primary" type="submit" value="update">
 
+                <a th:href="@{/quanlytaikhoan}" class="btn btn-outline-secondar">Quay lại</a>
 
             </form>
         </div>

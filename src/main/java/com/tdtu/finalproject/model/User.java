@@ -4,6 +4,7 @@ package com.tdtu.finalproject.model;
 import javax.persistence.*;
 
 @Entity
+@Table(name = "user")
 public class User {
     @Column(name = "id")
     private int id;
@@ -19,6 +20,16 @@ public class User {
 
     @Column(name = "phone")
     private String phone;
+
+//    //foreign key roleID from Role table
+//    @ManyToOne
+//    @JoinColumn(name = "roleId")
+//    private Role role;
+//
+
+
+
+
 
     public User() {
     }

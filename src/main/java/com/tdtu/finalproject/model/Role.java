@@ -1,40 +1,43 @@
 package com.tdtu.finalproject.model;
 
+import javax.persistence.*;
+
+@Entity
+@Table(name = "Role")
 public class Role {
-    private int id;
-    private String name;
-    private String defaultRole;
+
+    @Id
+    @GeneratedValue
+    @Column(name = "roleId")
+    private int roleId;
+
+    @Column(name = "roleName")
+    private String roleName;
+
+    @Column(name = "Permission")
     private int Permission;
 
-    public Role(int id, String name, String defaultRole, int permission) {
-        this.id = id;
-        this.name = name;
-        this.defaultRole = defaultRole;
+    public Role(int roleId, String name, int permission) {
+        this.roleId = roleId;
+        this.roleName = name;
         Permission = permission;
     }
 
-    public int getId() {
-        return id;
+    public Role() {
+
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public Integer getRoleId() {
+        return roleId;
     }
 
-    public String getName() {
-        return name;
+
+    public String getRoleName() {
+        return roleName;
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getDefaultRole() {
-        return defaultRole;
-    }
-
-    public void setDefaultRole(String defaultRole) {
-        this.defaultRole = defaultRole;
+    public void setRoleName(String roleName) {
+        this.roleName = roleName;
     }
 
     public int getPermission() {
@@ -43,5 +46,9 @@ public class Role {
 
     public void setPermission(int permission) {
         Permission = permission;
+    }
+
+    public void setRoleId(Integer roleId) {
+        this.roleId = roleId;
     }
 }

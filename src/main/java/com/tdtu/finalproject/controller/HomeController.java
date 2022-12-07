@@ -1,6 +1,7 @@
 package com.tdtu.finalproject.controller;
 
 //import com.tdtu.finalproject.DatSanRespository;
+
 import com.tdtu.finalproject.UserRepository;
 import com.tdtu.finalproject.model.DatSan;
 import com.tdtu.finalproject.model.EmailSenderService;
@@ -8,7 +9,6 @@ import com.tdtu.finalproject.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.core.parameters.P;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -43,6 +43,12 @@ public class HomeController {
     public String viewLoginPage(Model model) {
         return "login";
     }
+
+    @RequestMapping("/logout")
+    public String viewLogoutPage(Model model) {
+        return "logout";
+    }
+
 
     @RequestMapping("/register")
     public String viewRegisterPage(Model model) {
@@ -114,4 +120,13 @@ public class HomeController {
         emailSenderService.sendEmail(emailDangKy, subject, message);
         return "redirect:/";
     }
+
+//    @RequestMapping("/quanlytaikhoan")
+//    public String quanLyTaiKhoan(Model model) {
+//        List<User> userList = (List<User>) userRepository.findAll();
+//        model.addAttribute("userList", userList);
+//
+//        return "quanlytaikhoan";
+//    }
+
 }
