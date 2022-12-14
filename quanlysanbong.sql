@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th12 14, 2022 lúc 11:57 AM
+-- Thời gian đã tạo: Th12 14, 2022 lúc 03:02 PM
 -- Phiên bản máy phục vụ: 10.4.25-MariaDB
 -- Phiên bản PHP: 8.1.10
 
@@ -33,7 +33,7 @@ CREATE TABLE `datsan` (
   `gio_ket_thuc` varchar(255) DEFAULT NULL,
   `ma_san_bong` int(11) NOT NULL,
   `ngay_dat_san` varchar(255) DEFAULT NULL,
-  `so_dien_thoai_khach_hang` int(11) NOT NULL,
+  `so_dien_thoai_khach_hang` varchar(120) NOT NULL,
   `ten_khach_hang` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -42,91 +42,13 @@ CREATE TABLE `datsan` (
 --
 
 INSERT INTO `datsan` (`ma_dat_san`, `gio_bat_dau`, `gio_ket_thuc`, `ma_san_bong`, `ngay_dat_san`, `so_dien_thoai_khach_hang`, `ten_khach_hang`) VALUES
-(1, '12:11', '11:11', 0, '2022-12-22', 123, '123'),
-(2, '03:01', '03:01', 0, '2022-12-14', 12414, '123123'),
-(3, '', '', 0, '', 123, '123'),
-(4, '', '', 2, '', 123, '123123');
-
--- --------------------------------------------------------
-
---
--- Cấu trúc bảng cho bảng `hibernate_sequence`
---
-
-CREATE TABLE `hibernate_sequence` (
-  `next_val` bigint(20) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Đang đổ dữ liệu cho bảng `hibernate_sequence`
---
-
-INSERT INTO `hibernate_sequence` (`next_val`) VALUES
-(1);
-
--- --------------------------------------------------------
-
---
--- Cấu trúc bảng cho bảng `role`
---
-
-CREATE TABLE `role` (
-  `role_id` int(11) NOT NULL,
-  `permission` varchar(255) DEFAULT NULL,
-  `role_name` varchar(255) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Đang đổ dữ liệu cho bảng `role`
---
-
-INSERT INTO `role` (`role_id`, `permission`, `role_name`) VALUES
-(1, 'Truy cap trang web, xem bang gia, dang nhap, dang ky', 'Khach'),
-(2, 'Dat San, Xem lich su dat san, Thay doi thon tin ca nhan', 'TaiKhoanCaNhan'),
-(3, 'Quan ly tai khoan, quan ly san', 'ADMIN');
-
--- --------------------------------------------------------
-
---
--- Cấu trúc bảng cho bảng `san`
---
-
-CREATE TABLE `san` (
-  `ma_san_bong` int(11) NOT NULL,
-  `gia_thue` int(11) NOT NULL,
-  `loai_san` varchar(255) DEFAULT NULL,
-  `ten_san_bong` varchar(255) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Đang đổ dữ liệu cho bảng `san`
---
-
-INSERT INTO `san` (`ma_san_bong`, `gia_thue`, `loai_san`, `ten_san_bong`) VALUES
-(1, 200000, 'Sân cỏ 7', 'Sân cỏ 7'),
-(2, 250000, 'Sân cỏ 11', 'Sân cỏ 11');
-
--- --------------------------------------------------------
-
---
--- Cấu trúc bảng cho bảng `user`
---
-
-CREATE TABLE `user` (
-  `id` int(11) NOT NULL,
-  `email` varchar(255) DEFAULT NULL,
-  `password` varchar(255) DEFAULT NULL,
-  `phone` varchar(255) DEFAULT NULL,
-  `role_id` int(11) NOT NULL,
-  `username` varchar(255) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Đang đổ dữ liệu cho bảng `user`
---
-
-INSERT INTO `user` (`id`, `email`, `password`, `phone`, `role_id`, `username`) VALUES
-(1, 'namthongminhghe@gmail.com', '$2a$10$hy8lYzaXxWAIIxyFnvr2o.XAuxg9kPMDvQHXW/SXh4E1nQVuwJwS2', '0869887363', 3, 'namtong');
+(1, '12:11', '11:11', 0, '2022-12-22', '123', '123'),
+(2, '03:01', '03:01', 0, '2022-12-14', '12414', '123123'),
+(3, '', '', 0, '', '123', '123'),
+(4, '', '', 2, '', '123', '123123'),
+(5, '11:11', '12:12', 1, '2022-12-17', '869887363', 'Thành Nam'),
+(6, '11:11', '12:12', 1, '2022-12-09', '909121212', 'Nam'),
+(7, '06:06', '09:09', 4, '2022-11-29', '0606060606', 'Nam');
 
 --
 -- Chỉ mục cho các bảng đã đổ
@@ -139,24 +61,6 @@ ALTER TABLE `datsan`
   ADD PRIMARY KEY (`ma_dat_san`);
 
 --
--- Chỉ mục cho bảng `role`
---
-ALTER TABLE `role`
-  ADD PRIMARY KEY (`role_id`);
-
---
--- Chỉ mục cho bảng `san`
---
-ALTER TABLE `san`
-  ADD PRIMARY KEY (`ma_san_bong`);
-
---
--- Chỉ mục cho bảng `user`
---
-ALTER TABLE `user`
-  ADD PRIMARY KEY (`id`);
-
---
 -- AUTO_INCREMENT cho các bảng đã đổ
 --
 
@@ -164,19 +68,7 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT cho bảng `datsan`
 --
 ALTER TABLE `datsan`
-  MODIFY `ma_dat_san` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
-
---
--- AUTO_INCREMENT cho bảng `san`
---
-ALTER TABLE `san`
-  MODIFY `ma_san_bong` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
-
---
--- AUTO_INCREMENT cho bảng `user`
---
-ALTER TABLE `user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `ma_dat_san` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
