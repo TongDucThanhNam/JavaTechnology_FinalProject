@@ -13,17 +13,19 @@
 
 </head>
 <body>
+<nav th:replace="attibute/navbar">
 
-<!--User profile-->
+</nav>
+
 <div class="container">
     <div class="row">
         <div class="col-md-6 col-md-offset-3">
             <h2 class="text-center">Thông tin cá nhân</h2>
-            <form th:action="@{thongtincanhan}" th:object="${user}" method="post">
+            <form th:action="@{thongtincanhan}" th:object="${auth}" method="post">
                 <div class="row">
                     <label>
                         Username
-                        <input class="form-control" type="text" th:field="*{username}">
+                        <input readonly class="form-control" type="text" th:field="*{username}">
                     </label>
                 </div>
 

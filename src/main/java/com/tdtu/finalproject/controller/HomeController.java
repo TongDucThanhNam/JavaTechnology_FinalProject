@@ -15,13 +15,12 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @Controller
+@SessionAttributes("user")
 public class HomeController {
     @Autowired
     private UserRepository userRepository;
@@ -35,18 +34,23 @@ public class HomeController {
     @Autowired
     SanRepository sanRepository;
 
-    //Route "/" :Trang chủ , method Get
-    @RequestMapping(value = "/", method = RequestMethod.GET)
-    public String viewHomePage(Model model) {
-        System.out.println("Trang chủ");
+    //Session lưu thông tin đăng nhập
+    @ModelAttribute("auth")
+    public User layThongTinDangNhap() {
         //Lấy thông tin đăng nhập:
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         //Tìm thông tin đăng nhập trong bảng User bằng username -> Trả về đối tượng User
         User user = userRepository.getUserByUsername(auth.getName());
-        if (user != null) {
-            //Thêm đối tượng User vào model -> truyền đến View hay thymeleaf template
-            model.addAttribute("user", user);
-            System.out.println("Đã đăng nhập");
+        //Trả về user nều không null, nếu null thì tạo mới user
+        return user;
+    }
+
+    //Route "/" :Trang chủ , method Get
+    @RequestMapping(value = "/", method = RequestMethod.GET)
+    public String viewHomePage(Model model, @ModelAttribute("auth") User auth) {
+        System.out.println("Trang chủ");
+        if (auth != null) {
+            model.addAttribute("auth", auth);
         }
         return "index";
     }
@@ -88,14 +92,10 @@ public class HomeController {
 
     //Route "thongtincanhan": trang chỉnh sửa thông tin cá nhân, method GET
     @RequestMapping(value = "/thongtincanhan", method = RequestMethod.GET)
-    public String thongTinCaNhan(Model model) {
-        //Lấy thông tin user sau khi đã đăng nhập
-        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-        User user = userRepository.getUserByUsername(auth.getName());
-        if (user != null) {
-            //Nếu tìm thấy thì truyền vào View
-            model.addAttribute("user", user);
-            System.out.println("Đã đăng nhập");
+    public String thongTinCaNhan(Model model, @ModelAttribute("auth") User auth) {
+
+        if (auth != null) {
+            model.addAttribute("auth", auth);
         }
         return "thongtincanhan";
     }
@@ -133,7 +133,7 @@ public class HomeController {
         //Lấy tất cả thông tin của bảng San
         List<San> sanList = (List<San>) sanRepository.findAll();
         for (San san : sanList) {
-             System.out.println(san.getMaSanBong());
+            System.out.println(san.getMaSanBong());
         }
         model.addAttribute("datSan", new DatSan());
         model.addAttribute("sanList", sanList);
@@ -161,4 +161,14 @@ public class HomeController {
         emailSenderService.sendEmail(emailDangKy, subject, message);
         return "redirect:/";
     }
+
+    //Rout "banggia": trang xem các sân bóng và giá, method GET
+    @RequestMapping(value = "/banggia", method = RequestMethod.GET)
+    public String bangGia(Model model) {
+        //Select San có trong bảng San
+        List<San> sanList = (List<San>) sanRepository.findAll();
+        model.addAttribute("sanList", sanList);
+        return "banggia";
+    }
+
 }

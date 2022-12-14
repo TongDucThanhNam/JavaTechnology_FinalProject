@@ -7,15 +7,15 @@
         <div class="collapse navbar-collapse">
             <a class="navbar-brand" th:href="@{/}">Trang chủ</a>
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                <li class="nav-item" th:if="${user != null}">
+                <li class="nav-item" th:if="${auth != null}">
                     <a class="nav-link" th:href="@{/thongtincanhan}" tabindex="-1" aria-disabled="true">Thông tin cá nhân</a>
                 </li>
-                <li class="nav-item" th:if="${user == null}">
+                <li class="nav-item" th:if="${auth == null}">
                     <a class="nav-link disabled" th:href="@{/thongtincanhan}" tabindex="-1" aria-disabled="false">Thông tin cá nhân</a>
                 </li>
 
                 <li class="nav-item">
-                    <a href="#" class="nav-link">Bảng Giá</a>
+                    <a th:href="@{/banggia}" class="nav-link">Bảng Giá</a>
                 </li>
                 <li class="nav-item">
                     <a th:href="@{/trangdatsan}" class="nav-link">Đặt Sân</a>
@@ -31,13 +31,13 @@
 
 
 
-            <div th:if="${user != null}" th:object="${user}">
+            <div th:if="${auth != null}" th:object="${auth}">
                 <strong>Chào mừng bạn đã đăng nhập: </strong>
-                <a th:text="${user.getUsername()}"> </a>
+                <a th:text="${auth.getUsername()}"> </a>
                 <a th:href="@{/logout}" class="btn btn btn-outline-danger">Đăng xuất</a>
             </div>
 
-            <div th:if="${user == null}">
+            <div th:if="${auth == null}">
                 <a type="button" th:href="@{/login}"
                    class="btn btn-outline-primary" style="margin: 10px">Đăng nhập</a>
                 <a type="button" th:href="@{/register}"
