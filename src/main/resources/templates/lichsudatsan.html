@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
@@ -11,66 +10,43 @@
 
 </nav>
 
+<div class="page-content">
+    <div class="container-fluid">
+        <h3>Lịch sử đặt đân</h3>
+        <div class="row">
+            <div class="card">
+                <div class="card-body">
+                    <table roleId="datatable" class="table table-hover">
+                        <thead class="thead-dark">
+                        <tr>
+                            <th>ID</th>
+                            <th>Người đặt sân</th>
+                            <th>Số điện thoại</th>
+                            <th>Ngày đặt sân</th>
+                            <th>Giờ đặt sân</th>
+                            <th>Tên sân</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr th:each="">
+                            <td>98541201</td>
+                            <td>Sân A</td>
+                            <td>30/5/2022</td>
+                            <td>10:00 - 12:00</td>
+                            <td>150.000</td>
+                            <td>
+                                <a href="#">Xoá</a>
+                            </td>
+                        </tr>
 
-    <div class="page-content">
-        <div class="container-fluid">
+                        </tr>
 
-            <h3>Lịch sử đặt đân</h3>
-                            
-            <div class="row">
-                <div class="card">
-                    <div class="card-body">
-                        <table roleId="datatable" class="table table-hover">
-                            <thead class="thead-dark">
-                                <tr>
-                                    <th>Số hoá đơn</th>
-                                    <th>Sân</th>
-                                    <th>Ngày đặt</th>
-                                    <th>Thời gian</th>
-                                    <th>Tổng tiền</th>
-                                    <th></th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>98541201</td>
-                                    <td>Sân A</td>
-                                    <td>30/5/2022</td>
-                                    <td>10:00 - 12:00</td>
-                                    <td>150.000</td>
-                                    <td>
-                                       <a href="#">Xoá</a>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>98554654</td>
-                                    <td>Sân B</td>
-                                    <td>12/5/2022</td>
-                                    <td>8:00 - 11:00</td>
-                                    <td>160.000</td>
-                                    <td>
-                                       <a href="#">Xoá</a>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>98747444</td>
-                                    <td>Sân A</td>
-                                    <td>12/5/2022</td>
-                                    <td>8:00 - 11:00</td>
-                                    <td>160.000</td>
-                                    <td>
-                                       <a href="#">Xoá</a>
-                                    </td>
-                                </tr>
-                                
-                            </tbody>
-                        </table>
-                        
-                    </div>
+                        </tbody>
+                    </table>
                 </div>
             </div>
         </div>
     </div>
-
+</div>
 </body>
 </html>

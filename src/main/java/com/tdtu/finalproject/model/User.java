@@ -21,16 +21,6 @@ public class User {
     @Column(name = "phone")
     private String phone;
 
-//    //foreign key roleID from Role table
-//    @ManyToOne
-//    @JoinColumn(name = "roleId")
-//    private Role role;
-//
-
-
-
-
-
     public User() {
     }
 

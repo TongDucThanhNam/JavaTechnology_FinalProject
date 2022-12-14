@@ -18,32 +18,41 @@ public class UserAccountController {
     @Autowired
     private UserRepository userRepository;
 
+    //Route "quanlytaikhoan": Trang quản lý tài khoản, method GET
     @RequestMapping("/quanlytaikhoan")
     public String quanLyTaiKhoan(Model model) {
+        //Select tất cả User trong bảng user -> lưu vào List
         List<User> userList = (List<User>) userRepository.findAll();
+        //Truyền List vào model gửi tới View
         model.addAttribute("userList", userList);
-
         return "quanlytaikhoan";
     }
 
+    //Route "/quanlytaikhoan/delete/{id}": xoá tai khoản
     @RequestMapping(value = "/quanlytaikhoan/delete/{id}", method = RequestMethod.GET)
     public String delete(@PathVariable("id") int id) {
         System.out.println("Xóa tài khoản");
+        //Xoá khỏi bảng user với dòng có id = id
         userRepository.deleteById(id);
         return "redirect:/quanlytaikhoan";
     }
 
+    //Route "/quanlytaikhoan/edit/{id}": cập nhật tài khoản, method GET
     @RequestMapping(value = "/quanlytaikhoan/edit/{id}", method = RequestMethod.GET)
     public String edit(@PathVariable("id") int id, Model model) {
         System.out.println("thay doi thong tin tai khoan");
 
+        //Lấy dòng trong bảng user có id = id
         User user = userRepository.findById(id).get();
+        //gán vào model -> gửi đến View
         model.addAttribute("user", user);
         return "update_tai_khoan";
     }
 
+    //Route "/quanlytaikhoan/edit/{id}": cập nhật tài khoản, method POST
     @RequestMapping(value = "/quanlytaikhoan/edit/{id}", method = RequestMethod.POST)
     public String update(@PathVariable("id") int id, @RequestParam String username, @RequestParam String email, @RequestParam String phone, Model model) {
+        //Cập nhật thông tin tài khoản
         User user1 = userRepository.findById(id).get();
         user1.setUsername(username);
         user1.setEmail(email);
@@ -52,18 +61,24 @@ public class UserAccountController {
         return "redirect:/quanlytaikhoan";
     }
 
+    //Route "/quanlytaikhoan/themtaikhoan": trang thêm mới tài khoản, method GET
     @RequestMapping(value = "/quanlytaikhoan/themtaikhoan", method = RequestMethod.GET)
     public String themTaiKhoan(Model model) {
+        //Gán vào model đối tượng User -> gửi đến View
         model.addAttribute("user", new User());
         return "themtaikhoan";
     }
 
+    //Route "/quanlytaikhoan/themtaikhoan": trang thêm mới tài khoản, method POST
     @RequestMapping(value = "/quanlytaikhoan/themtaikhoan", method = RequestMethod.POST)
     public String themTaiKhoan(User user) {
         System.out.println("Thêm tài khoản");
+        //Thay đổi mật khẩu dạng text sang Mã hoá Bcrypt
         BCryptPasswordEncoder bCryptPasswordEncoder = new BCryptPasswordEncoder();
         String encodedPassword = bCryptPasswordEncoder.encode(user.getPassword());
         user.setPassword(encodedPassword);
+
+        //Lưu user đã tạo và đã mã hoá mật khẩu vào bảng user
         userRepository.save(user);
         return "redirect:/quanlytaikhoan";
     }
