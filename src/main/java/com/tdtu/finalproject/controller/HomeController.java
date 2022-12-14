@@ -172,9 +172,25 @@ public class HomeController {
     }
 
     //Route "quanmatkhau": quên mật khẩu, method GET
-
+    @RequestMapping(value = "/quenmatkhau", method = RequestMethod.GET)
+    public String quenmatkhau(Model model) {
+        model.addAttribute("user", new User());
+        return "quenmatkhau";
+    }
     //route "quanmatkhau": quên mật khẩu, method POST
-
+    @RequestMapping(value = "/quenmatkhau", method = RequestMethod.POST)
+    public String quenmatkhau(@RequestParam String username, Model model){
+        User user = userRepository.getUserByUsername(username);
+        String newpassword = "12345678";
+        BCryptPasswordEncoder bCryptPasswordEncoder = new BCryptPasswordEncoder();
+        String includepassword = bCryptPasswordEncoder.encode(newpassword);
+        user.setPassword(includepassword);
+        userRepository.save(user);
+        String suggest = "doimatkhau";
+        String getmessage = "Mat khau moi cua ban la " + newpassword;
+        emailSenderService.sendEmail(user.getEmail(), suggest, getmessage);
+        return "redirect:/";
+    }
     //route "doimatkhau": đổi mật khẩu, method GET
 
     //route "doimatkhau": đổi mật khẩu, method POST
