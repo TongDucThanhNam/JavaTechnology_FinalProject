@@ -3,9 +3,11 @@ package com.tdtu.finalproject.controller;
 //import com.tdtu.finalproject.DatSanRespository;
 
 import com.tdtu.finalproject.DatSanRespository;
+import com.tdtu.finalproject.SanRepository;
 import com.tdtu.finalproject.UserRepository;
 import com.tdtu.finalproject.model.DatSan;
 import com.tdtu.finalproject.model.EmailSenderService;
+import com.tdtu.finalproject.model.San;
 import com.tdtu.finalproject.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
@@ -13,7 +15,6 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -30,6 +31,9 @@ public class HomeController {
 
     @Autowired
     DatSanRespository datSanRespository;
+
+    @Autowired
+    SanRepository sanRepository;
 
     //Route "/" :Trang chủ , method Get
     @RequestMapping(value = "/", method = RequestMethod.GET)
@@ -117,25 +121,32 @@ public class HomeController {
     @RequestMapping(value = "/lichsudatsan", method = RequestMethod.GET)
     public String trangLichSuDatSan(Model model) {
         List<DatSan> datSanList = (List<DatSan>) datSanRespository.findAll();
+//        model.addAttribute("san", new San());
+
         model.addAttribute("datSanList", datSanList);
         return "lichsudatsan";
     }
 
     //Route "trangdatsan": Trang đặt sân, method GET
-    @RequestMapping("/trangdatsan")
+    @RequestMapping(value = "/trangdatsan", method = RequestMethod.GET)
     public String trangDatSan(Model model) {
+        //Lấy tất cả thông tin của bảng San
+        List<San> sanList = (List<San>) sanRepository.findAll();
+        for (San san : sanList) {
+             System.out.println(san.getMaSanBong());
+        }
+        model.addAttribute("datSan", new DatSan());
+        model.addAttribute("sanList", sanList);
+
         return "trangdatsan";
     }
 
     //Route "trangdatsan": Trang đặt sân, method = POST
     @RequestMapping(value = "/trangdatsan", method = RequestMethod.POST)
-    public String trangDatSan(@RequestParam String NguoiDatSan, @RequestParam int SoDienThoai, @RequestParam String ChonNgay, @RequestParam String ChonGio, Model model) {
+    public String trangDatSan(Model model, DatSan datSan) {
         //Tạo một đối tượng đặt sân vao bảng datsan
-        DatSan datSan = new DatSan();
-        datSan.setNguoiDatSan(NguoiDatSan);
-        datSan.setSoDienThoai(SoDienThoai);
-        datSan.setNgayDatSan(ChonNgay);
-        datSan.setGioDatSan(ChonGio);
+        model.addAttribute("datSan", new DatSan());
+
         datSanRespository.save(datSan);
 
         return "redirect:/lichsudatsan";

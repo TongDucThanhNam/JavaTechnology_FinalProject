@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Trang đặt sân</title>
@@ -14,33 +15,60 @@
     <div class="container py-5 h-100">
         <div class="row d-flex justify-content-center align-items-center h-100">
             <div class="col-12 col-md-8 col-lg-6 col-xl-5">
-                <div class="card bg-dark text-white" style="border-radius: 1rem;">
+                <div class="card bg-info text-white" style="border-radius: 1rem;">
                     <div class="card-body p-5 text-center">
-                        <div class="mb-md-5 mt-md-4 pb-5">
+                        <form th:action="@{trangdatsan}" th:object="${datSan}" th:method="post"
+                              class="mb-md-5 mt-md-4 pb-5">
                             <h2 class="fw-bold mb-2 text-uppercase">Đặt Sân</h2>
+                            <!--Mã sân bóng-->
                             <div class="form-outline form-white mb-4">
-                                <input type="text" roleId="NguoiDatSan" roleName="NguoiDatSan" class="form-control form-control-lg"/>
-                                <label class="form-label" for="NguoiDatSan">Người đặt sân</label>
+                                <select class="form-select" th:field="*{maSanBong}">
+                                    <option th:each="san: ${sanList}" th:text="${san.getTenSanBong()}"
+                                            th:value="${san.getMaSanBong()}" ></option>
+                                </select>
                             </div>
 
+                            <!--Tên khách hàng-->
                             <div class="form-outline form-white mb-4">
-                                <input type="number" roleId="SoDienThoai" roleName="SoDienThoai" class="form-control form-control-lg"/>
-                                <label class="form-label" for="SoDienThoai">Số Điện Thoại</label>
+                                <label>
+                                    Tên khách hàng
+                                    <input type="text" th:field="*{tenKhachHang}" class="form-control form-control-lg"/>
+                                </label>
+                            </div>
+                            <!--Số điện thoại khách hàng-->
+                            <div class="form-outline form-white mb-4">
+                                <label>
+                                    Số điện thoại khách hàng
+                                    <input type="number" th:field="*{soDienThoaiKhachHang}" class="form-control form-control-lg"/>
+                                </label>
+                            </div>
+                            <!--Ngày đặt sân-->
+                            <div class="form-outline form-white mb-4">
+                                <label>
+                                    Ngày đặt sân
+                                    <input type="date" th:field="*{ngayDatSan}" class="form-control form-control-lg"/>
+                                </label>
                             </div>
 
+                            <!--Giờ bát đầu-->
                             <div class="form-outline form-white mb-4">
-                                <input type="date" roleId="ChonNgay" roleName="ChonNgay" class="form-control form-control-lg"/>
-                                <label class="form-label" for="ChonNgay">Chọn ngày</label>
+                                <label>
+                                    Giờ bắt đầu
+                                    <input type="time" th:field="*{gioBatDau}" class="form-control form-control-lg"/>
+                                </label>
                             </div>
 
+                            <!--Giờ Kết thúc-->
                             <div class="form-outline form-white mb-4">
-                                <input type="time" roleId="ChonGio" roleName="ChonGio" class="form-control form-control-lg"/>
-                                <label class="form-label" for="ChonGio">Chọn giờ</label>
+                                <label>
+                                    Giờ kết thúc
+                                    <input type="time" th:field="*{gioKetThuc}" class="form-control form-control-lg"/>
+                                </label>
                             </div>
 
                             <button class="btn btn-outline-light btn-lg px-5" type="submit">Đặt sân</button>
 
-                        </div>
+                        </form>
                     </div>
                 </div>
             </div>

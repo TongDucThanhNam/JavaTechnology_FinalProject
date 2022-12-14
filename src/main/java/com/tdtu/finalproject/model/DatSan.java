@@ -1,62 +1,76 @@
 package com.tdtu.finalproject.model;
 
-import javax.persistence.Column;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
+@Entity
+@Table(name = "datsan")
 public class DatSan {
+    @Column(name = "madatsan")
+    private int maDatSan;
 
-    @Column(name = "id")
-    private int id;
+    @Column(name = "masanbong")
+    private int maSanBong;
 
-    @Column(name = "nguoiDatSan")
-    private String nguoiDatSan;
+    @Column(name = "tenkhachhang")
+    private String tenKhachHang;
 
-    @Column(name = "soDienThoai")
-    private int soDienThoai;
+    @Column(name = "sodienthoaikhachhang")
+    private int soDienThoaiKhachHang;
 
-    @Column(name = "ngayDatSan")
+    @Column(name = "ngaydatsan")
     private String ngayDatSan;
 
-    @Column(name = "gioDatSan")
-    private String gioDatSan;
+    @Column(name = "giobatdau")
+    private String gioBatDau;
+
+    @Column(name = "gioketthuc")
+    private String gioKetThuc;
 
     public DatSan() {
     }
 
-    public DatSan(int id, String nguoiDatSan, int soDienThoai, String ngayDatSan, String gioDatSan) {
-        this.id = id;
-        this.nguoiDatSan = nguoiDatSan;
-        soDienThoai = soDienThoai;
+    public DatSan(int maDatSan, int maSanBong, String tenKhachHang, int soDienThoaiKhachHang, String ngayDatSan, String gioBatDau, String gioKetThuc) {
+        this.maDatSan = maDatSan;
+        this.maSanBong = maSanBong;
+        this.tenKhachHang = tenKhachHang;
+        this.soDienThoaiKhachHang = soDienThoaiKhachHang;
         this.ngayDatSan = ngayDatSan;
-        this.gioDatSan = gioDatSan;
+        this.gioBatDau = gioBatDau;
+        this.gioKetThuc = gioKetThuc;
     }
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    public int getId() {
-        return id;
+    public int getMaDatSan() {
+        return maDatSan;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setMaDatSan(int maDatSan) {
+        this.maDatSan = maDatSan;
     }
 
-    public String getNguoiDatSan() {
-        return nguoiDatSan;
+    public int getMaSanBong() {
+        return maSanBong;
     }
 
-    public void setNguoiDatSan(String nguoiDatSan) {
-        this.nguoiDatSan = nguoiDatSan;
+    public void setMaSanBong(int maSanBong) {
+        this.maSanBong = maSanBong;
     }
 
-    public int getSoDienThoai() {
-        return soDienThoai;
+    public String getTenKhachHang() {
+        return tenKhachHang;
     }
 
-    public void setSoDienThoai(int soDienThoai) {
-        soDienThoai = soDienThoai;
+    public void setTenKhachHang(String tenKhachHang) {
+        this.tenKhachHang = tenKhachHang;
+    }
+
+    public int getSoDienThoaiKhachHang() {
+        return soDienThoaiKhachHang;
+    }
+
+    public void setSoDienThoaiKhachHang(int soDienThoaiKhachHang) {
+        this.soDienThoaiKhachHang = soDienThoaiKhachHang;
     }
 
     public String getNgayDatSan() {
@@ -67,11 +81,27 @@ public class DatSan {
         this.ngayDatSan = ngayDatSan;
     }
 
-    public String getGioDatSan() {
-        return gioDatSan;
+    public String getGioBatDau() {
+        return gioBatDau;
     }
 
-    public void setGioDatSan(String gioDatSan) {
-        this.gioDatSan = gioDatSan;
+    public void setGioBatDau(String gioBatDau) {
+        this.gioBatDau = gioBatDau;
     }
+
+    public String getGioKetThuc() {
+        return gioKetThuc;
+    }
+
+    public void setGioKetThuc(String gioKetThuc) {
+        this.gioKetThuc = gioKetThuc;
+    }
+
+//    public void setMaDatSan(Integer maDatSan) {
+//        this.maDatSan = maDatSan;
+//    }
+//
+//    public Integer getMaDatSan() {
+//        return maDatSan;
+//    }
 }
