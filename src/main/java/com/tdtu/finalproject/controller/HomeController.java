@@ -171,4 +171,12 @@ public class HomeController {
         return "banggia";
     }
 
+    //Route "quanmatkhau": quên mật khẩu, method GET
+
+    //route "quanmatkhau": quên mật khẩu, method POST
+
+    //route "doimatkhau": đổi mật khẩu, method GET
+
+    //route "doimatkhau": đổi mật khẩu, method POST
+
 }

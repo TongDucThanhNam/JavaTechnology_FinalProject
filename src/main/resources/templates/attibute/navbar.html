@@ -36,14 +36,18 @@
 
 
             <div th:if="${auth != null}" th:object="${auth}">
-                <strong>Chào mừng bạn đã đăng nhập: </strong>
+                <strong>Chào: </strong>
                 <a th:text="${auth.getUsername()}"> </a>
+                <a type="button" th:href="@{/doimatkhau}"
+                   class="btn btn-outline-primary">Đối mật khẩu</a>
                 <a th:href="@{/logout}" class="btn btn btn-outline-danger">Đăng xuất</a>
             </div>
 
             <div th:if="${auth == null}">
+                <a th:href="@{/quenmatkhau}" class="btn btn btn-outline-danger">Quên MK</a>
+
                 <a type="button" th:href="@{/login}"
-                   class="btn btn-outline-primary" style="margin: 10px">Đăng nhập</a>
+                   class="btn btn-outline-primary">Đăng nhập</a>
                 <a type="button" th:href="@{/register}"
                    class="btn btn-outline-secondary" style="margin: 10px">Đăng ký</a>
             </div>
