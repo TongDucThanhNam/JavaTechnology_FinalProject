@@ -1,6 +1,8 @@
 package com.tdtu.finalproject.model;
 
 
+import org.springframework.context.annotation.Role;
+
 import javax.persistence.*;
 
 @Entity
@@ -21,15 +23,19 @@ public class User {
     @Column(name = "phone")
     private String phone;
 
+    @Column(name = "roleId")
+    private int roleId;
+
     public User() {
     }
 
-    public User(int id, String username, String password, String email, String phone) {
+    public User(int id, String username, String password, String email, String phone, int roleId) {
         this.id = id;
         this.username = username;
         this.password = password;
         this.email = email;
         this.phone = phone;
+        this.roleId = roleId;
     }
 
     @Id
@@ -73,5 +79,13 @@ public class User {
 
     public void setPhone(String phone) {
         this.phone = phone;
+    }
+
+    public int getRoleId() {
+        return roleId;
+    }
+
+    public void setRoleId(int roleId) {
+        this.roleId = roleId;
     }
 }

@@ -14,13 +14,13 @@ public class Role {
     @Column(name = "roleName")
     private String roleName;
 
-    @Column(name = "Permission")
-    private int Permission;
+    @Column(name = "permission")
+    private String permission;
 
-    public Role(int roleId, String name, int permission) {
+    public Role(int roleId, String name, String permission) {
         this.roleId = roleId;
         this.roleName = name;
-        Permission = permission;
+        this.permission = permission;
     }
 
     public Role() {
@@ -40,12 +40,12 @@ public class Role {
         this.roleName = roleName;
     }
 
-    public int getPermission() {
-        return Permission;
+    public String getPermissionId() {
+        return permission;
     }
 
-    public void setPermission(int permission) {
-        Permission = permission;
+    public void setPermissionId(String permission) {
+        this.permission = permission;
     }
 
     public void setRoleId(Integer roleId) {

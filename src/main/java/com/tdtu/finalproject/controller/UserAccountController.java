@@ -1,6 +1,8 @@
 package com.tdtu.finalproject.controller;
 
+import com.tdtu.finalproject.RoleRepository;
 import com.tdtu.finalproject.UserRepository;
+import com.tdtu.finalproject.model.Role;
 import com.tdtu.finalproject.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -17,6 +19,9 @@ import java.util.List;
 public class UserAccountController {
     @Autowired
     private UserRepository userRepository;
+
+    @Autowired
+    RoleRepository roleRepository;
 
     //Route "quanlytaikhoan": Trang quản lý tài khoản, method GET
     @RequestMapping("/quanlytaikhoan")
@@ -46,17 +51,23 @@ public class UserAccountController {
         User user = userRepository.findById(id).get();
         //gán vào model -> gửi đến View
         model.addAttribute("user", user);
+
+        //List Role
+        List<Role> roleList = (List<Role>) roleRepository.findAll();
+        model.addAttribute("roleList", roleList);
+
         return "update_tai_khoan";
     }
 
     //Route "/quanlytaikhoan/edit/{id}": cập nhật tài khoản, method POST
     @RequestMapping(value = "/quanlytaikhoan/edit/{id}", method = RequestMethod.POST)
-    public String update(@PathVariable("id") int id, @RequestParam String username, @RequestParam String email, @RequestParam String phone, Model model) {
+    public String update(@PathVariable("id") int id, @RequestParam String username, @RequestParam String email, @RequestParam String phone, @RequestParam int roleId, Model model) {
         //Cập nhật thông tin tài khoản
         User user1 = userRepository.findById(id).get();
         user1.setUsername(username);
         user1.setEmail(email);
         user1.setPhone(phone);
+        user1.setRoleId(roleId);
         userRepository.save(user1);
         return "redirect:/quanlytaikhoan";
     }
