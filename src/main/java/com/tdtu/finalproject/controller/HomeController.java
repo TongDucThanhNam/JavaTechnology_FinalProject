@@ -171,13 +171,13 @@ public class HomeController {
         return "banggia";
     }
 
-    //Route "quanmatkhau": quên mật khẩu, method GET
+    //Route "quenmatkhau": quên mật khẩu, method GET
     @RequestMapping(value = "/quenmatkhau", method = RequestMethod.GET)
     public String quenmatkhau(Model model) {
         model.addAttribute("user", new User());
         return "quenmatkhau";
     }
-    //route "quanmatkhau": quên mật khẩu, method POST
+    //route "quenmatkhau": quên mật khẩu, method POST
     @RequestMapping(value = "/quenmatkhau", method = RequestMethod.POST)
     public String quenmatkhau(@RequestParam String username, Model model){
         User user = userRepository.getUserByUsername(username);
