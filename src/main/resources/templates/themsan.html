@@ -19,25 +19,25 @@
                 <div class="row">
                     <label>
                         Nhập tên sân
-                        <input class="form-control" type="text" th:field="*{tenSanBong}">
+                        <input class="form-control" required type="text" th:field="*{tenSanBong}">
                     </label>
                 </div>
                 <div class="row">
                     <label>
                         Nhập loại sân
-                        <input class="form-control" type="text" th:field="*{loaiSan}">
+                        <input class="form-control" required type="text" th:field="*{loaiSan}">
                     </label>
                 </div>
 
                 <div class="row">
                     <label>
                         Nhập giá thuê
-                        <input class="form-control" type="number" th:field="*{giaThue}">
+                        <input class="form-control" required type="number" th:field="*{giaThue}">
                     </label>
                 </div>
 
                 <div class="row">
-                    <input class="btn btn-primary" type="submit" value="Thêm tài khoản">
+                    <input class="btn btn-primary" required type="submit" value="Thêm tài khoản">
                 </div>
             </form>
         </div>

@@ -22,7 +22,7 @@
                             <h2 class="fw-bold mb-2 text-uppercase">Đặt Sân</h2>
                             <!--Mã sân bóng-->
                             <div class="form-outline form-white mb-4">
-                                <select class="form-select" th:field="*{maSanBong}">
+                                <select class="form-select" required th:field="*{maSanBong}">
                                     <option th:each="san: ${sanList}" th:text="${san.getTenSanBong()}"
                                             th:value="${san.getMaSanBong()}" ></option>
                                 </select>
@@ -32,21 +32,21 @@
                             <div class="form-outline form-white mb-4">
                                 <label>
                                     Tên khách hàng
-                                    <input type="text" th:field="*{tenKhachHang}" class="form-control form-control-lg"/>
+                                    <input type="text" th:field="*{tenKhachHang}" required class="form-control form-control-lg"/>
                                 </label>
                             </div>
                             <!--Số điện thoại khách hàng-->
                             <div class="form-outline form-white mb-4">
                                 <label>
                                     Số điện thoại khách hàng
-                                    <input type="number" th:field="*{soDienThoaiKhachHang}" class="form-control form-control-lg"/>
+                                    <input type="number" th:field="*{soDienThoaiKhachHang}" required class="form-control form-control-lg"/>
                                 </label>
                             </div>
                             <!--Ngày đặt sân-->
                             <div class="form-outline form-white mb-4">
                                 <label>
                                     Ngày đặt sân
-                                    <input type="date" th:field="*{ngayDatSan}" class="form-control form-control-lg"/>
+                                    <input type="date" th:field="*{ngayDatSan}" required class="form-control form-control-lg"/>
                                 </label>
                             </div>
 
@@ -54,7 +54,7 @@
                             <div class="form-outline form-white mb-4">
                                 <label>
                                     Giờ bắt đầu
-                                    <input type="time" th:field="*{gioBatDau}" class="form-control form-control-lg"/>
+                                    <input type="time" th:field="*{gioBatDau}" required class="form-control form-control-lg"/>
                                 </label>
                             </div>
 
@@ -62,7 +62,7 @@
                             <div class="form-outline form-white mb-4">
                                 <label>
                                     Giờ kết thúc
-                                    <input type="time" th:field="*{gioKetThuc}" class="form-control form-control-lg"/>
+                                    <input type="time" th:field="*{gioKetThuc}" required class="form-control form-control-lg"/>
                                 </label>
                             </div>
 

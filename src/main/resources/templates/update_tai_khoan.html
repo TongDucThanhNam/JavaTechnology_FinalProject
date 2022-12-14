@@ -52,7 +52,8 @@
                 <div class="row">
                     <label>
                         <select th:field="*{roleId}">
-                            <option th:each="role: ${roleList}" th:text="${role.getRoleName()}" th:value="${role.getRoleId()}">
+                            <option th:each="role: ${roleList}" th:text="${role.getRoleName()}"
+                                    th:value="${role.getRoleId()}">
 
                             </option>
                         </select>
@@ -63,7 +64,6 @@
                 <input class="btn btn-primary" type="submit" value="update">
 
                 <a th:href="@{/quanlytaikhoan}" class="btn btn-outline-secondar">Quay lại</a>
-
             </form>
         </div>
     </div>

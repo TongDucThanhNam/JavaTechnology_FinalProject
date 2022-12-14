@@ -15,7 +15,7 @@ public class DatSan {
     private String tenKhachHang;
 
     @Column(name = "sodienthoaikhachhang")
-    private int soDienThoaiKhachHang;
+    private String soDienThoaiKhachHang;
 
     @Column(name = "ngaydatsan")
     private String ngayDatSan;
@@ -29,7 +29,7 @@ public class DatSan {
     public DatSan() {
     }
 
-    public DatSan(int maDatSan, int maSanBong, String tenKhachHang, int soDienThoaiKhachHang, String ngayDatSan, String gioBatDau, String gioKetThuc) {
+    public DatSan(int maDatSan, int maSanBong, String tenKhachHang, String soDienThoaiKhachHang, String ngayDatSan, String gioBatDau, String gioKetThuc) {
         this.maDatSan = maDatSan;
         this.maSanBong = maSanBong;
         this.tenKhachHang = tenKhachHang;
@@ -65,11 +65,11 @@ public class DatSan {
         this.tenKhachHang = tenKhachHang;
     }
 
-    public int getSoDienThoaiKhachHang() {
+    public String getSoDienThoaiKhachHang() {
         return soDienThoaiKhachHang;
     }
 
-    public void setSoDienThoaiKhachHang(int soDienThoaiKhachHang) {
+    public void setSoDienThoaiKhachHang(String soDienThoaiKhachHang) {
         this.soDienThoaiKhachHang = soDienThoaiKhachHang;
     }
 
