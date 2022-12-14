@@ -1,7 +1,7 @@
 package com.tdtu.finalproject.controller;
 
-import com.tdtu.finalproject.RoleRepository;
-import com.tdtu.finalproject.UserRepository;
+import com.tdtu.finalproject.repository.RoleRepository;
+import com.tdtu.finalproject.repository.UserRepository;
 import com.tdtu.finalproject.model.Role;
 import com.tdtu.finalproject.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,7 +13,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Objects;
 
 @Controller
 @SessionAttributes("user")

@@ -1,4 +1,4 @@
-package com.tdtu.finalproject;
+package com.tdtu.finalproject.repository;
 
 import com.tdtu.finalproject.model.DatSan;
 import org.springframework.data.jpa.repository.Query;

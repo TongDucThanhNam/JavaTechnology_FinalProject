@@ -1,10 +1,10 @@
 package com.tdtu.finalproject.controller;
 
-//import com.tdtu.finalproject.DatSanRespository;
+//import com.tdtu.finalproject.repository.DatSanRespository;
 
-import com.tdtu.finalproject.DatSanRespository;
-import com.tdtu.finalproject.SanRepository;
-import com.tdtu.finalproject.UserRepository;
+import com.tdtu.finalproject.repository.DatSanRespository;
+import com.tdtu.finalproject.repository.SanRepository;
+import com.tdtu.finalproject.repository.UserRepository;
 import com.tdtu.finalproject.model.DatSan;
 import com.tdtu.finalproject.model.EmailSenderService;
 import com.tdtu.finalproject.model.San;
