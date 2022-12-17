@@ -24,7 +24,7 @@ time_zone = "+00:00";
 --
     create
 database quanlysanbong;
-user quanlysanbong;
+use quanlysanbong;
 
 -- --------------------------------------------------------
 
