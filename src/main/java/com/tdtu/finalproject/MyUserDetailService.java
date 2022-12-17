@@ -15,8 +15,10 @@ public class MyUserDetailService implements UserDetailsService {
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+        //Lấy thông tin người dùng từ CSDL bằng username
         User user = userRepository.getUserByUsername(username);
         if (user == null) {
+            //Trả về ngoại lệ khu không tìm thấy user trong CSDL
             throw new UsernameNotFoundException("Không tìm thấy user");
         }
         return new UserDetail(user);

@@ -11,6 +11,6 @@
 
 ### Để chạy hệ thống: 
 - Sử dụng phầm mềm Xampp chạy MySQL chỉnh port thành 3306
-- Tạo một CSDL tên quanlysanbong
-- Import quanlysanbong.sql để tạo các bảng cần thiết
+- Import quanlysanbong.sql để tạo các bảng và dữ liệu cần thiết (Đã bao gom cau lệnh tạo database)
 - Chạy hệ thống bằng link: http://localhost:8081/
+- Tài khoản để đăng nhập vào hệ thống: Có thể sử dụng chức năng đăng ký hoặc admin/admin hoặc namtong/12345678
