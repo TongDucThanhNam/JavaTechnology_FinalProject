@@ -1,22 +1,38 @@
 package com.tdtu.finalproject.controller;
 
 import com.tdtu.finalproject.model.San;
+import com.tdtu.finalproject.model.User;
 import com.tdtu.finalproject.repository.SanRepository;
+import com.tdtu.finalproject.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+@SessionAttributes("user")
 @Controller
 public class SanController {
 
     @Autowired
     private SanRepository sanRepository;
+
+    @Autowired
+    private UserRepository userRepository;
+
+    //Session lưu thông tin đăng nhập
+    @ModelAttribute("auth")
+    public User layThongTinDangNhap() {
+        //Lấy thông tin đăng nhập:
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        //Tìm thông tin đăng nhập trong bảng User bằng username -> Trả về đối tượng User
+        User user = userRepository.getUserByUsername(auth.getName());
+        //Trả về user nều không null, nếu null thì tạo mới user
+        return user;
+    }
 
     //	Trang quản lý sân bóng
     @RequestMapping("/quanlysanbong")
